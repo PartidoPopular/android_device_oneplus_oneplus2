@@ -63,12 +63,12 @@ ALL_DEFAULT_INSTALLED_MODULES += $(ISDB_SYMLINKS)
 KM_IMAGES := \
     keymaste.b00 keymaste.b01 keymaste.b02 keymaste.b03 keymaste.mdt
 
-KM_SYMLINKS := $(addprefix $(TARGET_OUT_ETC)/firmware/,$(notdir $(KM_IMAGES)))
+KM_SYMLINKS := $(addprefix $(TARGET_OUT_VENDOR)/firmware/keymaster/,$(notdir $(KM_IMAGES)))
 $(KM_SYMLINKS): $(LOCAL_INSTALLED_MODULE)
 	@echo "Keymaster firmware link: $@"
 	@mkdir -p $(dir $@)
 	@rm -rf $@
-	$(hide) ln -sf /firmware/image/$(notdir $@) $@
+	$(hide) ln -sf /firmware/image/$(notdir $@) ${@/keymaste/keymaster}
 
 ALL_DEFAULT_INSTALLED_MODULES += $(KM_SYMLINKS)
 
@@ -110,6 +110,18 @@ $(PLAYREADY_SYMLINKS): $(LOCAL_INSTALLED_MODULE)
 	$(hide) ln -sf /firmware/image/$(notdir $@) $@
 
 ALL_DEFAULT_INSTALLED_MODULES += $(PLAYREADY_SYMLINKS)
+
+SECUREMM_IMAGES := \
+    securemm.b00 securemm.b01 securemm.b02 securemm.b03 securemm.mdt
+
+SECUREMM_SYMLINKS := $(addprefix $(TARGET_OUT_ETC)/firmware/,$(notdir $(SECUREMM_IMAGES)))
+$(SECUREMM_SYMLINKS): $(LOCAL_INSTALLED_MODULE)
+	@echo "Securemm firmware link: $@"
+	@mkdir -p $(dir $@)
+	@rm -rf $@
+	$(hide) ln -sf /firmware/image/$(notdir $@) $@
+
+ALL_DEFAULT_INSTALLED_MODULES += $(SECUREMM_SYMLINKS)
 
 WV_IMAGES := \
     widevine.b00 widevine.b01 widevine.b02 widevine.b03 widevine.mdt
