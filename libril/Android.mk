@@ -1,8 +1,8 @@
 # Copyright 2016 The Android Open Source Project
 
 ifeq ($(BOARD_PROVIDES_LIBRIL),true)
-ifeq ($(TARGET_BOARD_PLATFORM),msm8226)
-ifeq ($(BOARD_VENDOR),htc)
+ifeq ($(TARGET_BOARD_PLATFORM),msm8994)
+ifeq ($(BOARD_VENDOR),oneplus)
 
 LOCAL_PATH:= $(call my-dir)
 include $(CLEAR_VARS)
