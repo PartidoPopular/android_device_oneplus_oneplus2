@@ -366,6 +366,7 @@ vendor/lib64/libmm-abl-oem.so
 
 # QMI
 bin/irsc_util
+vendor/lib/libconfigdb.so
 -vendor/lib/libdiag.so
 vendor/lib/libdsi_netctrl.so
 -vendor/lib/libdsutils.so
@@ -381,6 +382,7 @@ vendor/lib/libqmi_common_so.so
 vendor/lib/libqmi_csi.so
 vendor/lib/libqmi_encdec.so
 -vendor/lib/libqmiservices.so
+vendor/lib64/libconfigdb.so
 vendor/lib/libsmemlog.so
 -vendor/lib64/libdiag.so
 vendor/lib64/libdsi_netctrl.so
@@ -430,14 +432,17 @@ vendor/lib64/libril-qcril-hook-oem.so
 vendor/lib64/libxml.so
 
 # Sensors
+bin/sensors.qcom
 etc/firmware/tp/14049/14049_FW_S1302.img
 etc/firmware/tp/14049/14049_FW_S3320_jdi.img
 vendor/lib/hw/activity_recognition.msm8994.so
 vendor/lib/hw/sensors.msm8994.so
+vendor/lib/hw/sensors.oem.so
 vendor/lib/libsensor1.so
 vendor/lib/libsensor_reg.so
 vendor/lib64/hw/activity_recognition.msm8994.so
 vendor/lib64/hw/sensors.msm8994.so
+vendor/lib64/hw/sensors.oem.so
 vendor/lib64/libsensor1.so
 vendor/lib64/libsensor_reg.so
 
