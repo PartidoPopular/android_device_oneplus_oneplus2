@@ -96,6 +96,7 @@ EXTENDED_FONT_FOOTPRINT := true
 # RIL
 TARGET_RIL_VARIANT := caf
 BOARD_PROVIDES_LIBRIL := true
+BOARD_RIL_CLASS := ../../../device/oneplus/oneplus2/ril
 
 # GPS
 TARGET_GPS_HAL_PATH := device/oneplus/oneplus2/gps
