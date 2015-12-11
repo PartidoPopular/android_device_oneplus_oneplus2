@@ -1,6 +1,8 @@
-# Copyright 2006 The Android Open Source Project
+# Copyright 2016 The Android Open Source Project
 
 ifeq ($(BOARD_PROVIDES_LIBRIL),true)
+ifeq ($(TARGET_BOARD_PLATFORM),msm8226)
+ifeq ($(BOARD_VENDOR),htc)
 
 LOCAL_PATH:= $(call my-dir)
 include $(CLEAR_VARS)
@@ -28,6 +30,14 @@ ifeq ($(SIM_COUNT), 2)
     LOCAL_CFLAGS += -DANDROID_SIM_COUNT_2
 endif
 
+ifeq ($(BOARD_RIL_NO_CELLINFOLIST),true)
+LOCAL_CFLAGS += -DRIL_NO_CELL_INFO_LIST
+endif
+
+ifeq ($(BOARD_RIL_FIVE_SEARCH_RESPONSES),true)
+LOCAL_CFLAGS += -DRIL_FIVE_SEARCH_RESPONSES
+endif
+
 LOCAL_C_INCLUDES += $(TARGET_OUT_HEADER)/librilutils
 LOCAL_C_INCLUDES += external/nanopb-c
 
@@ -38,25 +48,6 @@ LOCAL_COPY_HEADERS := ril_ex.h
 
 include $(BUILD_SHARED_LIBRARY)
 
-
-# For RdoServD which needs a static library
-# =========================================
-ifneq ($(ANDROID_BIONIC_TRANSITION),)
-include $(CLEAR_VARS)
-
-LOCAL_SRC_FILES:= \
-    ril.cpp
-
-LOCAL_STATIC_LIBRARIES := \
-    libutils_static \
-    libcutils \
-    librilutils_static \
-    libprotobuf-c-nano-enable_malloc
-
-LOCAL_CFLAGS :=
-
-LOCAL_MODULE:= libril_static
-
-include $(BUILD_STATIC_LIBRARY)
-endif # ANDROID_BIONIC_TRANSITION
+endif # BOARD_VENDOR
+endif # TARGET_BOARD_PLATFORM
 endif # BOARD_PROVIDES_LIBRIL
